@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import com.innovamonitoring.models.entity.Property;
 import com.innovamonitoring.models.services.IPropertyService;
 import com.innovamonitoring.models.services.IUserService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class PropertyRestController {
@@ -75,6 +77,7 @@ public class PropertyRestController {
 		actualProperty.setDirection(property.getDirection());
 		actualProperty.setReports(property.getReports());
 		actualProperty.setUser(property.getUser());
+		actualProperty.setImg(property.getImg());
 		actualProperty.setCameras(property.getCameras());
 		
 		propertyUpdated = propertyService.save(actualProperty);

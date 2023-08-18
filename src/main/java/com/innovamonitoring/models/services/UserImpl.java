@@ -41,10 +41,12 @@ public class UserImpl implements IUserService{
 	}
 
 	@Override
-	public UserEntity findByUsername(String username) {
+	public UserEntity findByEmail(String email) {
 		
-		return userDao.findByUsername(username);
+		return userDao.findByEmail(email);
 	}
+
+	
 	
 	
 }

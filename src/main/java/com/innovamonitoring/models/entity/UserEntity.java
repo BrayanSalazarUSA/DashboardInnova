@@ -37,15 +37,14 @@ public class UserEntity implements Serializable {
 	private String email;
 
 	private String pasword;
+	
+	private String image;
 
 	private Boolean enabled;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name="users_roles", joinColumns=@JoinColumn(name="user_id"), 
-	inverseJoinColumns =@JoinColumn(name="role_id"), uniqueConstraints = {@UniqueConstraint(columnNames = {
-			"user_id", "role_id"
-	})})
-	private List<Rol> roles;
+	@ManyToOne()
+	@JoinColumn(name = "role")
+	private Rol rol;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JsonIgnoreProperties({ "user", "cameras", "reports" })
@@ -61,6 +60,14 @@ public class UserEntity implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getName() {
@@ -119,11 +126,13 @@ public class UserEntity implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public List<Rol> getRoles() {
-		return roles;
+	public Rol getRol() {
+		return rol;
 	}
 
-	public void setRoles(List<Rol> roles) {
-		this.roles = roles;
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
+
+	
 }

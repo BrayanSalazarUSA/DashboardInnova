@@ -34,6 +34,8 @@ public class Report implements Serializable {
 
 	private Long numerCase;
 
+	private String company;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "HH:mm")
 	@JsonFormat(pattern = "HH:mm")
@@ -60,6 +62,11 @@ public class Report implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Evidence> evidences;
 
+
+	@ManyToOne()
+	@JoinColumn(name = "role")
+	private Agent agent;
+	
 	public Report() {
 
 	}
@@ -80,11 +87,6 @@ public class Report implements Serializable {
 		this.numerCase = numerCase;
 	}
 
-	/*
-	 * public CaseType getType() { return type; }
-	 * 
-	 * public void setType(CaseType type) { this.type = type; }
-	 */
 	public String getLevel() {
 		return level;
 	}
@@ -109,12 +111,7 @@ public class Report implements Serializable {
 		this.pdf = pdf;
 	}
 
-	/*
-	 * public List<Evidence> getEvidences() { return evidences; }
-	 * 
-	 * public void setEvidences(List<Evidence> evidences) { this.evidences =
-	 * evidences; }
-	 */
+	
 
 	public Property getProperty() {
 		return property;
@@ -146,6 +143,14 @@ public class Report implements Serializable {
 
 	public void setEvidences(List<Evidence> evidences) {
 		this.evidences = evidences;
+	}
+
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 
 }

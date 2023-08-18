@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
 import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -31,23 +30,21 @@ public class Property implements Serializable {
 	private Long id;
 	private String name;
 	private String direction;
+	private String img;
 
-	
-	
 	@ManyToOne()
 	@JoinColumn(name = "user")
-	@JsonIgnoreProperties({ "user"})
+	@JsonIgnoreProperties({ "user" })
 	private UserEntity user;
-	
+
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("property")
 	private List<Camera> cameras;
 
-	
-	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
+	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Report> reports;
-	
+
 	public List<Camera> getCameras() {
 		return cameras;
 	}
@@ -55,9 +52,9 @@ public class Property implements Serializable {
 	public void setCameras(List<Camera> cameras) {
 		this.cameras = cameras;
 	}
-	
+
 	public Property() {
-		
+
 	}
 
 	public String getName() {
@@ -84,8 +81,6 @@ public class Property implements Serializable {
 		this.id = id;
 	}
 
-	
-	
 	public List<Report> getReports() {
 		return reports;
 	}
@@ -102,8 +97,14 @@ public class Property implements Serializable {
 		this.user = user;
 	}
 
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 }
-
-

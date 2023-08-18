@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ import com.innovamonitoring.models.entity.Report;
 import com.innovamonitoring.models.services.ICameraService;
 
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class CameraController {
@@ -83,6 +84,8 @@ public class CameraController {
 		actualCamera.setInstalledByUs(camera.getInstalledByUs());
 		actualCamera.setProperty(camera.getProperty());
 		actualCamera.setStatus(camera.getStatus());
+		actualCamera.setType(camera.getType());
+		actualCamera.setDateInstalled(camera.getDateInstalled());
 		
 		cameraUpdated = cameraService.save(actualCamera);
 		

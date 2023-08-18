@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.innovamonitoring.models.entity.Rol;
 import com.innovamonitoring.models.entity.UserEntity;
 import com.innovamonitoring.models.services.IUserService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -62,13 +64,13 @@ public class UserController {
 	
 	@PostMapping("/users/login")
 	public ResponseEntity<?> login(@RequestBody UserEntity user ) {
-		
+		System.out.println(user);
 		UserEntity actualUser = null;
 
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			actualUser = userService.findByUsername(user.getUsername());
+			actualUser = userService.findByEmail(user.getEmail());
 
 		} catch (DataAccessException e) {
 			response.put("message", "Error when querying the database: ");
@@ -76,13 +78,13 @@ public class UserController {
 		}
 
 		if (actualUser == null) {
-			response.put("message", "The user: ".concat(user.getUsername().concat(" does not exist in the database!")));
+			response.put("message", "The email: ".concat(user.getEmail().concat(" does not exist in the database!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		
 		if(actualUser.getPasword().equals(user.getPasword()) == false) {
 			
-			response.put("message", "The user: ".concat(user.getUsername().concat(" The password does not match the user name, please try again.!")));
+			response.put("message", "The email: ".concat(user.getUsername().concat(" The password does not match the user name, please try again.!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 

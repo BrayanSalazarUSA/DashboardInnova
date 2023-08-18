@@ -15,6 +15,6 @@ public interface IUserService {
 	
 	public UserEntity findById (Long id);
 	
-	public UserEntity findByUsername(String username);
+	public UserEntity findByEmail(String email);
 	
 }

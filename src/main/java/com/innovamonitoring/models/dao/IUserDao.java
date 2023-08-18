@@ -9,5 +9,5 @@ import com.innovamonitoring.models.entity.UserEntity;
 @Repository
 public interface IUserDao extends CrudRepository<UserEntity, Long>{
 	
-		public UserEntity findByUsername(String username);
+		public UserEntity findByEmail(String email);
 }

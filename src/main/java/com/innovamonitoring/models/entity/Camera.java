@@ -1,7 +1,11 @@
 package com.innovamonitoring.models.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -14,6 +18,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "cameras")
@@ -30,15 +36,20 @@ public class Camera implements Serializable {
 	private String brand;
 
 	private String installedByUs;
+	
+	private String type;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date dateInstalled;
 
 	@ManyToOne()
 	@JoinColumn(name = "property")
 	@JsonIgnoreProperties({ "direction", "user", "cameras", "reports" })
 	private Property property;
 
-	@ManyToOne()
-	@JoinColumn(name = "status")
-	private CameraStatus status;
+	private String status;
 
 	private String image;
 
@@ -70,6 +81,14 @@ public class Camera implements Serializable {
 		this.brand = brand;
 	}
 
+	public Date getDateInstalled() {
+		return dateInstalled;
+	}
+
+	public void setDateInstalled(Date dateInstalled) {
+		this.dateInstalled = dateInstalled;
+	}
+
 	public String getInstalledByUs() {
 		return installedByUs;
 	}
@@ -86,11 +105,22 @@ public class Camera implements Serializable {
 		this.property = property;
 	}
 
-	public CameraStatus getStatus() {
+	
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(CameraStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
