@@ -48,8 +48,8 @@ public class Report implements Serializable {
 	private String level;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd-mm-yyyy")
+	@JsonFormat(pattern = "dd-mm-yyyy")
 	private Date date;
 
 	private String pdf;
@@ -67,6 +67,7 @@ public class Report implements Serializable {
 	@JoinColumn(name = "role")
 	private Agent agent;
 	
+	private boolean verified;
 	public Report() {
 
 	}
@@ -152,5 +153,23 @@ public class Report implements Serializable {
 	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	
+	
 
 }

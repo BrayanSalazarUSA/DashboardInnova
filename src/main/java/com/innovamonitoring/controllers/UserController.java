@@ -84,7 +84,7 @@ public class UserController {
 		
 		if(actualUser.getPasword().equals(user.getPasword()) == false) {
 			
-			response.put("message", "The email: ".concat(user.getUsername().concat(" The password does not match the user name, please try again.!")));
+			response.put("message", "The email: ".concat(user.getEmail().concat(" The password does not match the user name, please try again.!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 
@@ -109,7 +109,6 @@ public class UserController {
 		actualUser.setEmail(user.getEmail());
 		actualUser.setPasword(user.getPasword());
 		actualUser.setProperties(user.getProperties());
-		actualUser.setUsername(user.getUsername());
 
 		userUpdated = userService.save(actualUser);
 

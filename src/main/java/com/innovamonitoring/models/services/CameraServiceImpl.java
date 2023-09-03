@@ -41,7 +41,7 @@ public class CameraServiceImpl implements ICameraService{
 	@Override
 	public List<Camera> findByPropertyId(Long id) {
 		
-		return findByPropertyId(id);
+		return cameraDao.findByProperty(id);
 	}
 
 }

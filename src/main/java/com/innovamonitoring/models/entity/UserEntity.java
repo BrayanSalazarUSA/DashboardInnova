@@ -32,7 +32,6 @@ public class UserEntity implements Serializable {
 
 	private String name;
 
-	private String username;
 
 	private String email;
 
@@ -102,13 +101,6 @@ public class UserEntity implements Serializable {
 		this.properties = properties;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 	public boolean isEnabled() {
 		return enabled;

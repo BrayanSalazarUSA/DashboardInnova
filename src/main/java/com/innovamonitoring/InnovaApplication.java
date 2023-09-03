@@ -21,6 +21,8 @@ public class InnovaApplication {
 		SpringApplication.run(InnovaApplication.class, args);
 	}
 
+	
+	//jkhjs
 	/*@Autowired
 	private IPropertyService service;
 	

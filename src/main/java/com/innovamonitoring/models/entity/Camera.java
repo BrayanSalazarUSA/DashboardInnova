@@ -3,7 +3,7 @@ package com.innovamonitoring.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -39,9 +39,9 @@ public class Camera implements Serializable {
 	
 	private String type;
 	
-	@Temporal(TemporalType.DATE)
+	/*@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")*/
 	private Date dateInstalled;
 
 	@ManyToOne()

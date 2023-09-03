@@ -41,7 +41,7 @@ public class Property implements Serializable {
 	@JsonIgnoreProperties("property")
 	private List<Camera> cameras;
 
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(mappedBy = "property", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Report> reports;
 

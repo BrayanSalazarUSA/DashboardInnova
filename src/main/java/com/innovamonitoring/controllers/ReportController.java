@@ -88,6 +88,8 @@ public class ReportController {
 		actualReport.setPdf(report.getPdf());
 		actualReport.setAgent(report.getAgent());
 		//actualReport.setEvidences(report.getEvidences());
+		actualReport.setVerified(report.isVerified());
+		actualReport.setCompany(report.getCompany());
 		reportUpdated = reportService.save(actualReport);
 		return reportUpdated;
 	}
