@@ -20,6 +20,7 @@ public class CaseType implements Serializable{
 	
 	private String incident;
 
+
 	
 	public CaseType() {
 		

@@ -41,7 +41,7 @@ public class Report implements Serializable {
 	@JsonFormat(pattern = "HH:mm")
 	private Date time;
 
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "caseType")
 	private CaseType caseType;
 
