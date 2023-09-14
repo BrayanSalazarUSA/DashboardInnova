@@ -26,8 +26,6 @@ import com.innovamonitoring.models.services.IAgentService;
 @RestController
 @RequestMapping("/api")
 public class AgentController {
-
-	
 	@Autowired
 	private IAgentService agentService;
 	
@@ -38,10 +36,8 @@ public class AgentController {
 	
 	@PostMapping("/agents")
 	public Agent create(@RequestBody Agent agent) {
-	
 		return agentService.save(agent);
 	}
-	
 	
 
 	@PutMapping("/agents/{id}")

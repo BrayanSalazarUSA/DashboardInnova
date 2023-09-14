@@ -35,7 +35,7 @@ public class Report implements Serializable {
 	private Long numerCase;
 
 	private String company;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "HH:mm")
 	@JsonFormat(pattern = "HH:mm")
@@ -48,8 +48,8 @@ public class Report implements Serializable {
 	private String level;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd-mm-yyyy")
-	@JsonFormat(pattern = "dd-mm-yyyy")
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
 	private Date date;
 
 	private String pdf;
@@ -66,7 +66,7 @@ public class Report implements Serializable {
 	@ManyToOne()
 	@JoinColumn(name = "role")
 	private Agent agent;
-	
+
 	private boolean verified;
 	public Report() {
 
@@ -112,7 +112,7 @@ public class Report implements Serializable {
 		this.pdf = pdf;
 	}
 
-	
+
 
 	public Property getProperty() {
 		return property;
@@ -169,7 +169,7 @@ public class Report implements Serializable {
 	public void setVerified(boolean verified) {
 		this.verified = verified;
 	}
-	
-	
+
+
 
 }

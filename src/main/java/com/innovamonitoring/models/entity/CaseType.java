@@ -1,12 +1,10 @@
 package com.innovamonitoring.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cases")
@@ -20,12 +18,22 @@ public class CaseType implements Serializable{
 	
 	private String incident;
 
+	@OneToMany(mappedBy = "caseType", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<Report> reports;
 
-	
 	public CaseType() {
 		
 	}
-	
+
+	public List<Report> getReports() {
+		return reports;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
+
 	public Long getId() {
 		return id;
 	}
